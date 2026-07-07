@@ -1,0 +1,104 @@
+{
+  "solutions": {
+    "home-tutoring": {
+      "title": "Get home tutoring",
+      "description": "6thtouch Robotics Academy provides high-quality tutoring for students, aiming to boost their enthusiasm for technology and other subjects. We offer adaptable learning schedules and plans that cater to individual time constraints.",
+      "formUrl": "/home-tutoring-form",
+      "heroImage": "/assets/images/about-hero.jpeg",
+      "stats": [
+        {
+          "target": 500,
+          "label": "Engaged Learners"
+        },
+        {
+          "target": 400,
+          "label": "Educational Summaries"
+        },
+        {
+          "target": 30,
+          "label": "Proficient Educators"
+        }
+      ]
+    },
+    "teacher-tutoring": {
+      "title": "Teachers Tutoring",
+      "description": "6thtouch Robotics provides coaches and instructors with knowledgeable and excellent instruction on STEM Robotics. We provide them with the tools necessary for them to successfully train and instruct on robotics and coding.",
+      "formUrl": "/teacher-tutoring-form",
+      "heroImage": "/assets/images/about-hero.jpeg",
+      "stats": [
+        {
+          "target": 100,
+          "label": "Trained Teachers"
+        },
+        {
+          "target": 203,
+          "label": "Educational Summaries"
+        },
+        {
+          "target": 100,
+          "label": "Proficient Educators"
+        }
+      ]
+    },
+    "coding-robotics-tutor": {
+      "title": "Coding & Robotics",
+      "description": "Receive top-notch coding and robotics training to gain deeper insights into the tech realm. Step into the world of technology with 6thtouch Robotics Academy, where we immerse you in cutting-edge technologies that are truly remarkable.",
+      "formUrl": "/coding-robotics-tutor-form",
+      "heroImage": "/assets/images/about-hero.jpeg",
+      "stats": [
+        {
+          "target": 100,
+          "label": "Engaged Learners"
+        },
+        {
+          "target": 10,
+          "label": "School Count"
+        },
+        {
+          "target": 100,
+          "label": "Proficient Educators"
+        }
+      ]
+    },
+    "school-tutoring": {
+      "title": "Get school tutoring",
+      "description": "By using School Tutoring to enroll in 6thtouch Robotics Academy, students at that school would have a greater opportunity to be creative and innovative. Additionally, 6thtouch Robotics Academy would assist in overseeing extracurricular activities and prepare the students for national and international robotics competitions related to what we offer.",
+      "formUrl": "/school-tutoring-form",
+      "heroImage": "/assets/images/about-hero.jpeg",
+      "stats": [
+        {
+          "target": 320,
+          "label": "Schools trained"
+        },
+        {
+          "target": 1000,
+          "label": "Students trained"
+        },
+        {
+          "target": 100,
+          "label": "Proficient Educators"
+        }
+      ]
+    }
+  },
+  "clients": [
+    {
+      "id": 1,
+      "name": "The Grok Academy, Ota Ogun State",
+      "description": "6th touch robotics academy was able to introduce the concept of robotics and coding to the students of grok academy",
+      "image": "/assets/images/grok_academy.jpeg"
+    },
+    {
+      "id": 2,
+      "name": "Oriwu Senior Model College, Ikorodu Lagos State",
+      "description": "6th touch robotics academy was able to introduce the concept of robotics and coding to the students of oriwu senior model college",
+      "image": "/assets/images/Oriwu Senior Model College.jpeg"
+    },
+    {
+      "id": 3,
+      "name": "Off Ojuore, Sango Ota, Ogun State",
+      "description": "6th touch robotics academy was able to introduce the concept of robotics and coding to the students of Off Ojuore, Sango Ota, Ogun State",
+      "image": "/assets/images/Off Ojuore.jpeg"
+    }
+  ]
+}

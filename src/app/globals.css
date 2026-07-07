@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #F4F6F9;
+  --foreground: #000000;
+
+  --color-primary: #1E3A8A;
+  --color-secondary: #FFCA00;
+  --color-accent: #CB7280;
+  --color-light: #F4F6F9;
+  --color-dark: #000000;
+
+  --font-sora: 'Sora', sans-serif;
+
+  /* Bootstrap Override CSS Variables */
+  --bs-primary: #1E3A8A;
+  --bs-secondary: #FFCA00;
+  --bs-warning: #FFCA00;
+  --bs-danger: #CB7280;
+  --bs-light: #F4F6F9;
+  --bs-dark: #000000;
+
+  --bs-body-bg: #F4F6F9;
+  --bs-body-color: #000000;
+
+  --bs-font-sans-serif: 'Sora', sans-serif;
+  --bs-body-font-family: 'Sora', sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sora);
+
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #F4F6F9;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Sora', sans-serif;
+}
+
+.custom-hover-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.custom-hover-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+}
