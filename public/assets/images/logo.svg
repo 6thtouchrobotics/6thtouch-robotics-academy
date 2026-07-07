@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 320 320" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-5108.242269,-653.205721)">
+        <g id="Face-book-logo" serif:id="Face book logo" transform="matrix(1,0,0,1,107.590744,653.205721)">
+            <rect x="5000.652" y="0" width="320" height="320" style="fill:none;"/>
+            <g transform="matrix(1.18238,0,0,1.18238,4750.921929,-202.185088)">
+                <g transform="matrix(0.314107,-0.189189,0.189189,0.314107,-19.662583,232.424215)">
+                    <path d="M961.768,464.5L949.171,554.808C941.419,553.726 740.602,553.184 732.776,553.184C639.316,553.184 563.439,629.061 563.439,722.521C563.439,815.981 639.414,887.577 732.776,891.858C782.149,894.122 884.113,848.043 884.113,754.521L975.294,754.521C975.294,898.401 851.752,983.04 732.776,983.04C588.991,983.04 472.257,866.305 472.257,722.521C472.257,578.737 588.991,462.002 732.776,462.002C744.816,462.002 949.843,462.837 961.768,464.5Z" style="fill:rgb(30,58,138);"/>
+                </g>
+                <g transform="matrix(0.398915,-0.24027,0.24027,0.398915,122.151518,327.368151)">
+                    <circle cx="414.23" cy="237.146" r="60.445" style="fill:rgb(255,106,0);"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

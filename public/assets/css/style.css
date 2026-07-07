@@ -1,0 +1,543 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap');
+
+/* ─── Brand Colour System ───────────────────────────────────────────────── */
+:root {
+  /* Override Bootstrap primary to brand navy */
+  --bs-primary: #1E3A8A;
+  --bs-primary-rgb: 30, 58, 138;
+  --bs-link-color: #1E3A8A;
+  --bs-link-color-rgb: 30, 58, 138;
+  --bs-link-hover-color: #FFCA00;
+
+  /* Override Bootstrap secondary to brand gold */
+  --bs-secondary: #FFCA00;
+  --bs-secondary-rgb: 255, 202, 0;
+
+  /* Override Bootstrap light to brand light */
+  --bs-light: #F4F6F9;
+  --bs-light-rgb: 244, 246, 249;
+
+  /* Override Bootstrap dark to brand black */
+  --bs-dark: #000000;
+  --bs-dark-rgb: 0, 0, 0;
+
+  /* Bootstrap focus-ring (form controls, buttons) */
+  --bs-focus-ring-color: rgba(30, 58, 138, 0.25);
+
+  /* Override Bootstrap button primary */
+  --bs-btn-bg: #1E3A8A;
+  --bs-btn-border-color: #1E3A8A;
+  --bs-btn-hover-bg: #152d6b;
+  --bs-btn-hover-border-color: #152d6b;
+  --bs-btn-active-bg: #152d6b;
+
+  /* Override accordion active indicator */
+  --bs-accordion-active-color: #1E3A8A;
+  --bs-accordion-active-bg: #eef1fa;
+  --bs-accordion-btn-focus-border-color: #1E3A8A;
+  --bs-accordion-btn-active-icon: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Sora', sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-family: 'Sora', sans-serif !important;
+}
+
+body {
+  padding-top: 0;
+}
+
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 90px;
+    /* Height of navbar */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    background-color: white;
+    visibility: hidden;
+    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
+
+  .offcanvas-collapse.open {
+    visibility: visible;
+    transform: translateX(-100%);
+  }
+
+  .offcanvas-collapse.open>.nav-link {
+    color: black !important;
+  }
+}
+
+.navbar {
+  transition: unset;
+}
+
+.scroll-nav {
+  background-color: white !important;
+  color: black !important;
+}
+
+.scroll-nav-a {
+  color: black !important;
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.nav-underline .nav-link {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.nav-underline .nav-link:hover {
+  color: #1E3A8A;
+}
+
+.nav-underline .active {
+  font-weight: 500;
+  color: #343a40;
+}
+
+#cursor {
+  display: inline-block;
+  width: 5px;
+  height: 40px;
+  background-color: gray;
+  animation: blink 0.5s infinite alternate;
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -999;
+  filter: brightness(20%);
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.video-container video {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: brightness(20%);
+}
+
+.radius-container-down,
+.radius-container {
+  border-bottom-left-radius: 50%;
+}
+
+.radius-container-up,
+.radius-container {
+  border-top-right-radius: 50%;
+}
+
+/* Optional: Add styling for other content */
+.content {
+  position: relative;
+  z-index: 1;
+  /* Ensure content is above video */
+  color: white;
+  text-align: center;
+  padding: 50px;
+}
+
+.navbar {
+  background-color: #ffffff5b;
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #fff;
+  border-radius: 0.75rem;
+}
+
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.icon-link>.bi {
+  margin-top: 0.125rem;
+  margin-left: 0.125rem;
+  transition: transform 0.25s ease-in-out;
+  fill: currentColor;
+}
+
+.icon-link:hover>.bi {
+  transform: translate(0.25rem);
+}
+
+.icon-square {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  border-radius: 0.75rem;
+}
+
+.card-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+#upArrowBtn {
+  animation: move-up 1.5s ease infinite;
+}
+
+#founderContainer,
+#tutorContainer {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-size: cover;
+  height: 300px;
+  padding: 0;
+  overflow: hidden;
+}
+
+#founderContainer {
+  background-image: url("/assets/images/founder_img.jpg");
+}
+
+#founderContainer .info,
+#tutorContainer .info {
+  padding: 30px;
+  background-color: #000000d8;
+  color: white;
+  height: 300px;
+  transform: translateY(-100%);
+  transition: all ease 0.5s;
+}
+
+#founderContainer:hover .info,
+#tutorContainer:hover .info {
+  transform: translateY(0);
+}
+
+#tutorContainer.mumuni-azeez {
+  background-image: url("/assets/images/david.png");
+}
+
+#tutorContainer.idowu-farouk {
+  background-image: url("/assets/images/a david.png");
+}
+
+#tutorContainer.maxwell {
+  background-image: url("/assets/images/maxwell.jpg");
+}
+
+#tutorContainer.akalugwu {
+  background-image: url("/assets/images/desmond.png");
+}
+
+.gallery-image {
+  cursor: pointer;
+}
+
+.gallery-modal {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #00000086;
+  z-index: 999999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.gallery-modal.active {
+  display: flex;
+}
+
+.gallery-modal div.close {
+  position: fixed;
+  right: 50px;
+  top: 20px;
+  z-index: 100000000000;
+  box-sizing: border-box;
+  text-align: right;
+}
+
+.gallery-modal div.close button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 30px;
+}
+
+.gallery-modal div {
+  text-align: center;
+  width: 100%;
+}
+
+.gallery-modal img {
+  width: 80%;
+  height: 100%;
+}
+
+@keyframes move-up {
+  0% {
+    padding-bottom: 0;
+  }
+
+  25% {
+    padding-bottom: 2px;
+  }
+
+  50% {
+    padding-bottom: 4px;
+  }
+
+  75% {
+    padding-bottom: 2;
+  }
+
+  100% {
+    padding-bottom: 0px;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.responsive {
+  width: 300px;
+  height: 300px;
+  background-color: red;
+}
+
+@media screen and (max-width: 690px) {
+  .responsive {
+    width: 100%;
+    height: 300px;
+    background-color: blue;
+  }
+}
+
+.hero {
+  background-color: #F4F6F9 !important;
+  color: #000000 !important;
+}
+
+.gradientBgColor {
+  background: linear-gradient(135deg, #F4F6F9 0%, #dbeafe 100%);
+}
+
+.gradientBgColor2 {
+  background: linear-gradient(135deg, #1E3A8A 0%, #CB7280 100%);
+}
+
+.border-color {
+  border: 5px solid #FFCA00 !important;
+}
+
+.btn-home {
+  background-color: #CB7280;
+  color: white;
+  transition: all 0.5s ease-out;
+}
+
+.btn-teacher {
+  background-color: #1E3A8A;
+  color: white;
+  transition: all 0.5s ease-out;
+}
+
+.btn-coding {
+  background-color: #FFCA00;
+  color: black;
+  transition: all 0.5s ease-out;
+}
+
+.btn-school {
+  background-color: #000000;
+  color: white;
+  transition: all 0.5s ease-out;
+}
+
+.btn-home:hover,
+.btn-teacher:hover,
+.btn-coding:hover,
+.btn-school:hover {
+  color: white;
+  transform: scale(1.2);
+}
+
+.btn-home.active,
+.btn-teacher.active,
+.btn-coding.active,
+.btn-school.active {
+  transform: scale(1.2);
+}
+
+.btn-school:hover {
+  color: #FFCA00 !important;
+}
+
+/* ─── Bootstrap Component Brand Overrides ───────────────────────────────── */
+
+/* Primary button */
+.btn-primary {
+  background-color: #1E3A8A !important;
+  border-color: #1E3A8A !important;
+  color: #ffffff !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #152d6b !important;
+  border-color: #152d6b !important;
+  box-shadow: 0 0 0 0.25rem rgba(30, 58, 138, 0.35) !important;
+}
+
+/* Outline primary button */
+.btn-outline-primary {
+  color: #1E3A8A !important;
+  border-color: #1E3A8A !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+  background-color: #1E3A8A !important;
+  border-color: #1E3A8A !important;
+  color: #ffffff !important;
+}
+
+/* Text and border utilities */
+.text-primary {
+  color: #1E3A8A !important;
+}
+
+.border-primary {
+  border-color: #1E3A8A !important;
+}
+
+.bg-primary {
+  background-color: #1E3A8A !important;
+}
+
+/* Form controls – focus ring */
+.form-control:focus,
+.form-select:focus {
+  border-color: #1E3A8A !important;
+  box-shadow: 0 0 0 0.25rem rgba(30, 58, 138, 0.25) !important;
+}
+
+/* Accordion active */
+.accordion-button:not(.collapsed) {
+  color: #1E3A8A !important;
+  background-color: #eef1fa !important;
+  box-shadow: inset 0 -1px 0 rgba(30, 58, 138, 0.15) !important;
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(30, 58, 138, 0.25) !important;
+}
+
+/* Dropdown active / selected item */
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #1E3A8A !important;
+  color: #ffffff !important;
+}
+
+/* Nav link active */
+.nav-link.active {
+  color: #1E3A8A !important;
+}
+
+/* Pagination */
+.page-item.active .page-link {
+  background-color: #1E3A8A !important;
+  border-color: #1E3A8A !important;
+}
+
+.page-link {
+  color: #1E3A8A !important;
+}
+
+.page-link:hover {
+  color: #152d6b !important;
+}
+
+/* Progress bar */
+.progress-bar {
+  background-color: #1E3A8A !important;
+}
+
+/* Badge primary */
+.badge.bg-primary {
+  background-color: #1E3A8A !important;
+}
+
+/* Checkbox / radio checked */
+.form-check-input:checked {
+  background-color: #1E3A8A !important;
+  border-color: #1E3A8A !important;
+}
