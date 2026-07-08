@@ -306,9 +306,9 @@ export default function Header() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #f9fafb;
-          border: 1px solid #e5e7eb;
-          color: #374151;
+          background: #fffaf7; /* Soft light orange background */
+          border: 1px solid #ffebd9; /* Soft orange border */
+          color: #FF6A00; /* Brand orange icon */
           font-size: 1.25rem;
           padding: 0.6rem;
           border-radius: 8px;
@@ -317,8 +317,9 @@ export default function Header() {
           z-index: 10001;
         }
         .nav-toggle-btn:hover {
-          background-color: #f3f4f6;
-          color: #111827;
+          background-color: #ffebd9; /* Deeper orange background on hover */
+          border-color: #ffd8be;
+          color: #e05e00; /* Darker orange icon on hover */
         }
 
         /* --- Navigation Items & Links --- */
