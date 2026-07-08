@@ -503,13 +503,13 @@ body {
 /* Dropdown active / selected item */
 .dropdown-item.active,
 .dropdown-item:active {
-  background-color: #1E3A8A !important;
-  color: #ffffff !important;
+  background-color: rgba(255, 106, 0, 0.06);
+  color: #FF6A00;
 }
 
 /* Nav link active */
 .nav-link.active {
-  color: #1E3A8A !important;
+  color: #000000;
 }
 
 /* Pagination */
