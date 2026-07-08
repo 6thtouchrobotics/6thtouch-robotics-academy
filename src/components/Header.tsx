@@ -275,19 +275,10 @@ export default function Header() {
           top: 0;
           left: 0;
           right: 0;
-          background-color: #ffffff; /* Fallback flat solid white to avoid alpha-bleeding */
+          background-color: #ffffff !important; /* Force solid white background */
           border-bottom: 1px solid #f3f4f6;
           box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
           z-index: 1030;
-        }
-
-        /* Modern browser glassmorphism enhancement support */
-        @supports (backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px)) {
-          .custom-navbar {
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-          }
         }
 
         .nav-container {
@@ -315,9 +306,9 @@ export default function Header() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #f9fafb;
-          border: 1px solid #e5e7eb;
-          color: #374151;
+          background: #fffaf7; /* Soft light orange background */
+          border: 1px solid #ffebd9; /* Soft orange border */
+          color: #FF6A00; /* Brand orange icon */
           font-size: 1.25rem;
           padding: 0.6rem;
           border-radius: 8px;
@@ -326,8 +317,9 @@ export default function Header() {
           z-index: 10001;
         }
         .nav-toggle-btn:hover {
-          background-color: #f3f4f6;
-          color: #111827;
+          background-color: #ffebd9; /* Deeper orange background on hover */
+          border-color: #ffd8be;
+          color: #e05e00; /* Darker orange icon on hover */
         }
 
         /* --- Navigation Items & Links --- */
@@ -340,26 +332,26 @@ export default function Header() {
           gap: 0.5rem;
         }
 
-        .nav-link {
+        :global(.nav-link) {
           position: relative;
           display: flex;
           align-items: center;
-          color: #4b5563;
-          font-size: 0.95rem;
+          color: #111827 !important; /* Shade of black */
+          font-size: 0.85rem !important; /* Reduced font size */
           font-weight: 500;
           padding: 0.75rem 1rem;
           text-decoration: none;
           border-radius: 8px;
           transition: all 0.2s ease;
         }
-        .nav-link:hover {
-          color: #FF6A00;
-          background-color: #fffaf7;
+        :global(.nav-link:hover) {
+          color: #FF6A00 !important;
+          background-color: #fffaf7 !important;
         }
-        .nav-link.active {
-          color: #FF6A00;
+        :global(.nav-link.active) {
+          color: #FF6A00 !important;
           font-weight: 600;
-          background-color: #fffaf7;
+          background-color: #fffaf7 !important;
         }
 
         /* Hidden on mobile to avoid breaking vertical link alignments */
@@ -404,7 +396,7 @@ export default function Header() {
           width: 100%;
         }
         .solutions-chevron {
-          font-size: 0.8rem;
+          font-size: 0.75rem;
           transition: transform 0.25s ease;
           opacity: 0.8;
         }
@@ -422,29 +414,29 @@ export default function Header() {
           display: block;
         }
 
-        .dropdown-item {
+        :global(.dropdown-item) {
           display: flex;
           align-items: center;
           gap: 12px;
           padding: 0.65rem 1rem;
-          color: #4b5563;
-          font-size: 0.9rem;
+          color: #111827 !important; /* Shade of black */
+          font-size: 0.85rem !important; /* Match nav-link font size */
           font-weight: 500;
           text-decoration: none;
           border-radius: 6px;
           transition: all 0.2s ease;
           margin-top: 2px;
         }
-        .dropdown-item :global(svg) {
+        :global(.dropdown-item svg) {
           color: #9ca3af;
           font-size: 1rem;
         }
-        .dropdown-item:hover, .dropdown-item.active {
-          color: #FF6A00;
-          background-color: #fffaf7;
+        :global(.dropdown-item:hover), :global(.dropdown-item.active) {
+          color: #FF6A00 !important;
+          background-color: #fffaf7 !important;
         }
-        .dropdown-item:hover :global(svg), .dropdown-item.active :global(svg) {
-          color: #FF6A00;
+        :global(.dropdown-item:hover svg), :global(.dropdown-item.active svg) {
+          color: #FF6A00 !important;
         }
 
         .menu-divider {
@@ -475,24 +467,25 @@ export default function Header() {
             gap: 0.25rem;
           }
 
-          .nav-link {
+          :global(.nav-link) {
             padding: 0.5rem 1rem;
             border-radius: 20px;
           }
-          .nav-link:hover {
-            background-color: #f9fafb;
-            color: #111827;
+          :global(.nav-link:hover) {
+            background-color: #f9fafb !important;
+            color: #FF6A00 !important; /* Highlight color on hover */
           }
-          .nav-link.active {
-            background-color: transparent;
-            color: #111827;
+          :global(.nav-link.active) {
+            background-color: transparent !important;
+            color: #000000 !important; /* Active text color - solid black */
+            font-weight: 600 !important; /* Bolder text for active page */
           }
 
           /* Bottom Dot Indicator Setup (Fixed and stabilized layout dimensions) */
           .active-dot {
             display: block;
             position: absolute;
-            bottom: -2px;
+            bottom: 4px; /* Positioned directly under active nav text */
             left: 50%;
             transform: translateX(-50%);
             width: 5px;
@@ -542,16 +535,16 @@ export default function Header() {
             animation: menuEntryEffect 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           }
 
-          .dropdown-item {
+          :global(.dropdown-item) {
             padding: 0.6rem 0.85rem;
           }
-          .dropdown-item:hover {
-            background-color: #f9fafb;
-            color: #111827;
+          :global(.dropdown-item:hover) {
+            background-color: #f9fafb !important;
+            color: #FF6A00 !important;
           }
-          .dropdown-item.active {
-            background-color: rgba(255, 106, 0, 0.06);
-            color: #c95200;
+          :global(.dropdown-item.active) {
+            background-color: rgba(255, 106, 0, 0.06) !important;
+            color: #c95200 !important;
           }
 
           @keyframes menuEntryEffect {
