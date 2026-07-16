@@ -1,22 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { Camera, Globe2, MessageCircleMore, Send } from "lucide-react";
 
 export default function Footer() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Thank you for subscribing to our newsletter!");
-  };
-
   return (
     <footer
-      className="container-fluid py-5 mt-auto position-relative overflow-hidden"
+      className="w-full py-16 mt-auto relative overflow-hidden font-sans border-t border-gray-100"
       style={{ backgroundColor: "#f8f8f3" }}
     >
       <div
         aria-hidden="true"
-        className="position-absolute top-0 start-0 w-100 h-100"
+        className="absolute inset-0 w-full h-full"
         style={{
           backgroundImage: "url('/assets/images/logo.svg')",
           backgroundSize: "48px 48px",
@@ -26,137 +20,122 @@ export default function Footer() {
           pointerEvents: "none",
         }}
       />
-      <div className="container position-relative" style={{ zIndex: 1 }}>
-        <div className="row">
-          <div className="col-md-6 mb-4 mb-md-0">
-            <Link className="fw-bold ms-3" href="/">
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          {/* Logo and Intro */}
+          <div className="md:col-span-6 mb-4 md:mb-0">
+            <Link className="font-bold block" href="/">
               <img
                 src="/assets/images/wordmark.svg"
                 alt="6thtouch STEM Logo"
                 width="180"
               />
             </Link>
-            <p className="mt-3 text-sm" style={{ lineHeight: "1.7", opacity: 0.85 }}>
+            <p className="mt-4 text-sm text-gray-600 max-w-md leading-relaxed">
               6thtouch Robotics Academy empowers learners of all ages through
               personalised STEM education — from home tutoring and teacher
               training to coding, robotics, and school programmes across Nigeria.
             </p>
           </div>
-          <div className="col-md-2">
-            <h5 className="mb-4 text-sm">Quick Links</h5>
-            <ul className="list-unstyled">
-              <li className="mb-2">
-                <Link href="/home-tutoring" className="link-dark text-decoration-none text-sm">
+
+          {/* Quick Links */}
+          <div className="md:col-span-2">
+            <h5 className="mb-4 text-xs font-bold tracking-wider text-gray-800 uppercase">
+              Quick Links
+            </h5>
+            <ul className="list-none p-0 m-0">
+              <li className="mb-2.5">
+                <Link href="/home-tutoring" className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm">
                   Home Tutors
                 </Link>
               </li>
-              <li className="mb-2">
-                <Link href="/teacher-tutoring" className="link-dark text-decoration-none text-sm">
+              <li className="mb-2.5">
+                <Link href="/teacher-tutoring" className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm">
                   Teaching Tutoring
                 </Link>
               </li>
-              <li className="mb-2">
-                <Link href="/coding-robotics-tutor" className="link-dark text-decoration-none text-sm">
+              <li className="mb-2.5">
+                <Link href="/coding-robotics-tutor" className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm">
                   Coding and Robotics
                 </Link>
               </li>
-              <li className="mb-2">
-                <Link href="/school-tutoring" className="link-dark text-decoration-none text-sm">
+              <li className="mb-2.5">
+                <Link href="/school-tutoring" className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm">
                   School Tutoring
                 </Link>
               </li>
-              <hr />
-              <li className="mb-2">
-                <Link href="/tutors-registration-form" className="link-dark text-decoration-none text-sm">
+              <li className="my-3">
+                <hr className="border-gray-200" />
+              </li>
+              <li className="mb-2.5">
+                <Link href="/tutors-registration-form" className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm font-medium">
                   Sign in as a Tutor
                 </Link>
               </li>
             </ul>
           </div>
-          <div className="col-md-2">
-            <h5 className="mb-4 text-sm">Other Links</h5>
-            <ul className="list-unstyled">
-              <li className="mb-2">
-                <Link href="/" className="link-dark text-decoration-none text-sm">
+
+          {/* Other Links */}
+          <div className="md:col-span-2">
+            <h5 className="mb-4 text-xs font-bold tracking-wider text-gray-800 uppercase">
+              Other Links
+            </h5>
+            <ul className="list-none p-0 m-0">
+              <li className="mb-2.5">
+                <Link href="/" className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm">
                   Home
                 </Link>
               </li>
-              <li className="mb-2">
-                <Link href="/contact" className="link-dark text-decoration-none text-sm">
+              <li className="mb-2.5">
+                <Link href="/contact" className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm">
                   Contact us
                 </Link>
               </li>
-              <li className="mb-2">
-                <Link href="/about" className="link-dark text-decoration-none text-sm">
+              <li className="mb-2.5">
+                <Link href="/about" className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm">
                   About us
                 </Link>
               </li>
-              <li className="mb-2">
-                <Link href="/gallery" className="link-dark text-decoration-none text-sm">
+              <li className="mb-2.5">
+                <Link href="/gallery" className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm">
                   Gallery
                 </Link>
               </li>
-              {/* <li className="mb-2">
-                <a href="#" className="link-dark text-decoration-none text-sm">
-                  Terms of use
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="link-dark text-decoration-none text-sm">
-                  Privacy Policy
-                </a>
-              </li> */}
             </ul>
           </div>
-          <div className="col-md-2">
-            <h5 className="mb-4 text-sm">Social Media</h5>
-            <ul className="list-unstyled">
-              {/* <li className="mb-2">
-                <a
-                  href="https://www.linkedin.com/in/andrew-aisagbonhi-687521145/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-dark text-decoration-none text-sm"
-                >
-                  LinkedIn
-                </a>
-              </li> */}
-              <li className="mb-2">
+
+          {/* Social Media */}
+          <div className="md:col-span-2">
+            <h5 className="mb-4 text-xs font-bold tracking-wider text-gray-800 uppercase">
+              Social Media
+            </h5>
+            <ul className="list-none p-0 m-0">
+              <li className="mb-2.5">
                 <a
                   href="https://www.instagram.com/6thtouch_robotics"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link-dark text-decoration-none text-sm"
+                  className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm"
                 >
                   Instagram
                 </a>
               </li>
-              <li className="mb-2">
+              <li className="mb-2.5">
                 <a
                   href="https://www.facebook.com/share/1LFHCLoAio/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link-dark text-decoration-none text-sm"
+                  className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm"
                 >
                   Facebook
                 </a>
               </li>
-              {/* <li className="mb-2">
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-dark text-decoration-none text-sm"
-                >
-                  Twitter
-                </a>
-              </li> */}
-              <li className="mb-2">
+              <li className="mb-2.5">
                 <a
                   href="https://www.youtube.com/@6thtouchrobotics"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link-dark text-decoration-none text-sm"
+                  className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm"
                 >
                   YouTube
                 </a>

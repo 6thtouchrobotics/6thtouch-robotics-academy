@@ -69,22 +69,25 @@ export default function SolutionPageClient({ data, clients }: SolutionPageClient
   return (
     <>
       {/* ── Hero ── */}
-      <section className="container-fluid home-tutoring py-5 mt-5">
-        <div className="container py-4">
-          <div className="row align-items-center">
-            <div className="col-md-6 mt-2">
-              <h1 className="h2 fw-bold mb-2" style={{ color: "#FF6A00" }}>{data.title}</h1>
-              <p className="lead">{data.description}</p>
-              <Link href={data.formUrl} className="btn btn-primary">
+      <section className="w-full py-16 mt-20 bg-gray-50/50 font-sans text-left">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="col-span-1">
+              <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-[#FF6A00] leading-tight">{data.title}</h1>
+              <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">{data.description}</p>
+              <Link
+                href={data.formUrl}
+                className="inline-flex items-center justify-center bg-[#1E3A8A] text-white py-3 px-6 rounded-xl hover:bg-[#152d6b] font-semibold text-sm transition-all duration-200 no-underline cursor-pointer"
+              >
                 Get started
-                <FaArrowUpRightFromSquare className="ms-2" />
+                <FaArrowUpRightFromSquare className="ml-2 text-xs" />
               </Link>
             </div>
-            <div className="col-md-6 mt-2">
+            <div className="col-span-1">
               <img
                 src={data.heroImage}
                 alt={`${data.title} Hero`}
-                className="img-fluid rounded-3"
+                className="w-full rounded-2xl shadow-md object-cover max-h-[360px]"
               />
             </div>
           </div>
@@ -92,11 +95,11 @@ export default function SolutionPageClient({ data, clients }: SolutionPageClient
       </section>
 
       {/* ── Stats ── */}
-      <section className="container-fluid bg-[#1E3A8A] text-white py-5 position-relative overflow-hidden">
+      <section className="w-full bg-[#1E3A8A] text-white py-16 relative overflow-hidden font-sans">
         {/* Watermark grid matching the style of the footer grid */}
         <div
           aria-hidden="true"
-          className="position-absolute top-0 start-0 w-100 h-100"
+          className="absolute inset-0 w-full h-full"
           style={{
             backgroundImage: "url('/assets/images/logo.svg')",
             backgroundSize: "36px 36px",
@@ -106,52 +109,51 @@ export default function SolutionPageClient({ data, clients }: SolutionPageClient
             pointerEvents: "none",
           }}
         />
-        <div className="container position-relative" style={{ zIndex: 1 }}>
-          <div className="row text-center">
-            <div className="col-md-4 mb-3 mb-md-0">
-              <h4>{val0}+</h4>
-              <p className="lead text-md">{data.stats[0]?.label}</p>
+        <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="col-span-1">
+              <h4 className="text-4xl font-extrabold text-[#FFCA00] mb-2">{val0}+</h4>
+              <p className="text-sm md:text-base text-blue-155 font-medium">{data.stats[0]?.label}</p>
             </div>
-            <div className="col-md-4 mb-3 mb-md-0">
-              <h4>{val1}+</h4>
-              <p className="lead text-md">{data.stats[1]?.label}</p>
+            <div className="col-span-1">
+              <h4 className="text-4xl font-extrabold text-[#FFCA00] mb-2">{val1}+</h4>
+              <p className="text-sm md:text-base text-blue-155 font-medium">{data.stats[1]?.label}</p>
             </div>
-            <div className="col-md-4">
-              <h4>{val2}+</h4>
-              <p className="lead text-md">{data.stats[2]?.label}</p>
+            <div className="col-span-1">
+              <h4 className="text-4xl font-extrabold text-[#FFCA00] mb-2">{val2}+</h4>
+              <p className="text-sm md:text-base text-blue-155 font-medium">{data.stats[2]?.label}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── Our Clients ── */}
-      <section className="container-fluid py-5">
-        <div className="container">
+      <section className="w-full py-16 mb-12 font-sans text-left">
+        <div className="max-w-[1200px] mx-auto px-6">
           {/* Heading */}
-          <div className="mb-5">
-            <p className="small text-uppercase text-muted fw-semibold mb-1" style={{ letterSpacing: "0.08em" }}>
+          <div className="mb-10">
+            <p className="text-xs uppercase text-gray-500 font-semibold mb-1.5 tracking-wider">
               Success Stories
             </p>
-            <h2 className="h3 fw-bold mb-2" style={{ color: "#FF6A00" }}>Our Clients</h2>
-            <p className="text-muted" style={{ maxWidth: 480 }}>
+            <h2 className="text-3xl font-bold mb-2 text-[#FF6A00]">Our Clients</h2>
+            <p className="text-sm text-gray-500 max-w-[480px] leading-relaxed">
               Meet some of the learners whose lives have been transformed through
               our personalised home tutoring programme.
             </p>
           </div>
 
           {/* Cards grid */}
-          <div className="row g-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {visibleClients.map((client) => (
-              <div className="col-12 col-sm-6 col-lg-4" key={client.id}>
-                <div className="rounded-4 border border-light-subtle p-4 h-100 shadow-sm bg-white">
+              <div className="col-span-1" key={client.id}>
+                <div className="rounded-2xl border border-gray-100 p-6 h-full shadow-sm bg-white transition-all hover:shadow-md duration-200">
                   <img
                     src={client.image}
                     alt={client.name}
-                    className="img-fluid rounded-3 mb-3"
-                    style={{ height: "220px", width: "100%", objectFit: "cover" }}
+                    className="w-full rounded-xl mb-4 h-[220px] object-cover"
                   />
-                  <h3 className="h5 fw-bold mb-2" style={{ color: "#1E3A8A" }}>{client.name}</h3>
-                  <p className="small text-muted mb-0">{client.description}</p>
+                  <h3 className="text-lg font-bold mb-2 text-[#1E3A8A]">{client.name}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed mb-0">{client.description}</p>
                 </div>
               </div>
             ))}
@@ -159,45 +161,22 @@ export default function SolutionPageClient({ data, clients }: SolutionPageClient
 
           {/* See more / See less toggle */}
           {clients.length > INITIAL_VISIBLE && (
-            <div className="text-center mt-5">
+            <div className="text-center mt-12">
               <button
-                className="btn-see-more"
+                className="inline-flex items-center gap-1.5 py-2.5 px-7 rounded-full border-2 border-[#FF6A00] bg-transparent text-[#FF6A00] font-semibold text-sm cursor-pointer transition-all duration-200 hover:bg-[#FF6A00] hover:text-white hover:shadow-[0_4px_16px_rgba(255,106,0,0.28)] focus:outline-none"
                 onClick={() => setShowAll(!showAll)}
                 aria-expanded={showAll}
               >
                 {showAll ? (
-                  <>See less <FaChevronUp className="ms-1" size={12} /></>
+                  <>See less <FaChevronUp className="ml-1 text-[11px]" /></>
                 ) : (
-                  <>See all {clients.length} clients <FaChevronDown className="ms-1" size={12} /></>
+                  <>See all {clients.length} clients <FaChevronDown className="ml-1 text-[11px]" /></>
                 )}
               </button>
             </div>
           )}
         </div>
       </section>
-
-      <style>{`
-        /* ── See more button ── */
-        .btn-see-more {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          padding: 10px 28px;
-          border-radius: 999px;
-          border: 2px solid #FF6A00;
-          background: transparent;
-          color: #FF6A00;
-          font-weight: 600;
-          font-size: 0.9rem;
-          cursor: pointer;
-          transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
-        }
-        .btn-see-more:hover {
-          background: #FF6A00;
-          color: #ffffff;
-          box-shadow: 0 4px 16px rgba(255,106,0,0.28);
-        }
-      `}</style>
     </>
   );
 }

@@ -21,7 +21,7 @@ export default function UpArrow() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = (e) => {
+  const scrollToTop = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     window.scrollTo({
       top: 0,
@@ -33,17 +33,18 @@ export default function UpArrow() {
 
   return (
     <div
-      className="go-up-arrow position-fixed bottom-0 end-0 me-3 mb-3"
+      className="fixed bottom-0 right-0 mr-4 mb-4"
       id="upArrowBtn"
       style={{ zIndex: 1000 }}
     >
-     <button 
-  type="button"
-  className="btn btn-primary w-12 h-12 flex justify-center items-center rounded-[50%] shadow-lg hover:bg-primary-600 transition-colors duration-300" 
-  onClick={scrollToTop}
->
-  <ArrowUp size={18} />
-</button>
+      <button
+        type="button"
+        className="w-12 h-12 flex justify-center items-center rounded-full bg-[#1E3A8A] text-white shadow-lg hover:bg-[#152d6b] hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1E3A8A]"
+        onClick={scrollToTop}
+        aria-label="Scroll to top"
+      >
+        <ArrowUp size={18} />
+      </button>
     </div>
   );
 }
