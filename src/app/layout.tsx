@@ -22,7 +22,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ colorScheme: "light", background: "#F4F6F9" }}>
       <head>
         <link rel="icon" href="/assets/images/6thtouch_logo.png" />
         <link
@@ -31,15 +31,14 @@ export default function RootLayout({ children }) {
           type="image/x-icon"
         />
         <link rel="apple-touch-icon" href="/assets/images/6thtouch_logo.png" />
-        <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="/assets/css/style.css" />
       </head>
-      <body>
+      <body className="bg-[#F4F6F9] text-black antialiased">
         <Header />
         <main>{children}</main>
         <Footer />
         <UpArrow />
       </body>
     </html>
+
   );
 }

@@ -104,8 +104,28 @@ export default function Header() {
     setIsDropdownOpen(false);
   };
 
+  const getNavLinkClass = (path: string) => {
+    const isActive = pathname === path;
+    return `relative flex items-center text-gray-900 text-[13.6px] font-medium py-3 px-4 no-underline rounded-lg transition-all duration-200 hover:text-[#FF6A00] hover:bg-[#fffaf7] lg:py-2 lg:px-4 lg:rounded-full lg:hover:bg-gray-50 lg:hover:text-[#FF6A00] ${
+      isActive
+        ? "!text-[#FF6A00] font-semibold bg-[#fffaf7] lg:bg-transparent lg:!text-gray-900 lg:font-semibold"
+        : ""
+    }`;
+  };
+
+  const getDropdownItemClass = (path: string) => {
+    const isActive = pathname === path;
+    return `flex items-center gap-3 py-2.5 px-4 text-gray-900 text-[13.6px] font-medium no-underline rounded-lg transition-all duration-200 mt-[2px] hover:text-[#FF6A00] hover:bg-[#fffaf7] lg:py-2.5 lg:px-3.5 lg:hover:bg-gray-50 lg:hover:text-[#FF6A00] ${
+      isActive ? "!text-[#FF6A00] bg-[#fffaf7] lg:bg-[rgba(255,106,0,0.06)] lg:!text-[#c95200]" : ""
+    }`;
+  };
+
   return (
-    <nav ref={navRef} className="custom-navbar" aria-label="Main navigation">
+    <nav
+      ref={navRef}
+      className="fixed top-0 left-0 right-0 bg-white border-b border-gray-100 shadow-[0_4px_20px_-2px_rgba(0,0,0,0.03)] z-[1030] w-full font-sans"
+      aria-label="Main navigation"
+    >
       {/* Scroll Indicator */}
       <div
         aria-hidden="true"
@@ -122,15 +142,15 @@ export default function Header() {
         }}
       />
 
-      <div className="nav-container">
+      <div className="w-full max-w-[1200px] mx-auto px-6 py-3 flex items-center justify-between box-border">
         {/* Brand Logo */}
-        <Link className="nav-brand" href="/" onClick={closeNavbar}>
+        <Link className="flex items-center transition-transform duration-200 hover:scale-[1.03]" href="/" onClick={closeNavbar}>
           <img src="/assets/images/logo.svg" alt="6thtouch STEM Logo" width="42" height="42" />
         </Link>
 
         {/* Mobile Hamburger Toggle Button */}
         <button
-          className="nav-toggle-btn"
+          className="lg:hidden flex items-center justify-center bg-[#fffaf7] border border-[#ffebd9] text-[#FF6A00] text-xl p-2.5 rounded-lg cursor-pointer transition-all duration-200 z-[10001] hover:bg-[#ffebd9] hover:border-[#ffd8be] hover:text-[#e05e00]"
           type="button"
           aria-label={isOpen ? "Close navigation" : "Open navigation"}
           onClick={toggleNavbar}
@@ -139,40 +159,44 @@ export default function Header() {
         </button>
 
         {/* Backdrop for mobile drawer overlay */}
-        {isOpen && <div className="drawer-backdrop" onClick={closeNavbar} />}
+        {isOpen && <div className="fixed inset-0 bg-gray-900/40 backdrop-blur-sm z-[999]" onClick={closeNavbar} />}
 
         {/* Navigation Content Menu */}
-        <div className={`nav-menu-wrapper ${isOpen ? "is-open" : ""}`}>
-          <ul className="nav-list">
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${pathname === "/" ? "active" : ""}`}
-                href="/"
-                onClick={closeNavbar}
-              >
+        <div
+          className={`fixed top-0 bottom-0 w-[280px] h-screen bg-white pt-22 px-6 pb-8 shadow-[-10px_0_30px_rgba(0,0,0,0.05)] transition-[right] duration-[350ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-[1000] overflow-y-auto box-border lg:static lg:w-auto lg:h-auto lg:p-0 lg:shadow-none lg:bg-transparent lg:overflow-visible ${
+            isOpen ? "right-0" : "right-[-100%]"
+          }`}
+        >
+          <ul className="list-none m-0 p-0 flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-1">
+            <li className="relative lg:block">
+              <Link className={getNavLinkClass("/")} href="/" onClick={closeNavbar}>
                 Home
-                {pathname === "/" && <span className="active-dot" aria-hidden="true" />}
+                {pathname === "/" && (
+                  <span className="hidden lg:block absolute bottom-1 left-1/2 -translate-x-1/2 w-1.25 h-1.25 rounded-full bg-[#FF6A00]" aria-hidden="true" />
+                )}
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${pathname === "/about" ? "active" : ""}`}
-                href="/about"
-                onClick={closeNavbar}
-              >
+            <li className="relative lg:block">
+              <Link className={getNavLinkClass("/about")} href="/about" onClick={closeNavbar}>
                 About Us
-                {pathname === "/about" && <span className="active-dot" aria-hidden="true" />}
+                {pathname === "/about" && (
+                  <span className="hidden lg:block absolute bottom-1 left-1/2 -translate-x-1/2 w-1.25 h-1.25 rounded-full bg-[#FF6A00]" aria-hidden="true" />
+                )}
               </Link>
             </li>
 
             {/* Dropdown Navigation Item */}
             <li
-              className={`nav-item dropdown solutions-dropdown ${isDropdownOpen ? "show" : ""}`}
+              className="relative lg:block solutions-dropdown after:absolute after:top-full after:left-[-10px] after:right-[-10px] after:h-[14px] after:bg-transparent after:content-['']"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
               <a
-                className={`nav-link solutions-toggle ${isSolutionsActive ? "active" : ""}`}
+                className={`relative flex items-center text-gray-900 text-[13.6px] font-medium py-3 px-4 no-underline rounded-lg transition-all duration-200 hover:text-[#FF6A00] hover:bg-[#fffaf7] lg:py-2 lg:px-4 lg:rounded-full lg:hover:bg-gray-50 lg:hover:text-[#FF6A00] justify-between w-full lg:gap-1.5 ${
+                  isSolutionsActive
+                    ? "!text-[#FF6A00] font-semibold bg-[#fffaf7] lg:bg-transparent lg:!text-gray-900 lg:font-semibold"
+                    : ""
+                }`}
                 href="#"
                 role="button"
                 aria-expanded={isDropdownOpen}
@@ -183,382 +207,90 @@ export default function Header() {
               >
                 Solutions
                 <FaChevronDown
-                  className={`solutions-chevron ${isDropdownOpen ? "flipped" : ""}`}
+                  className={`text-[12px] transition-transform duration-250 opacity-80 ${isDropdownOpen ? "rotate-180" : ""}`}
                   aria-hidden="true"
                 />
-                {isSolutionsActive && <span className="active-dot" aria-hidden="true" />}
+                {isSolutionsActive && (
+                  <span className="hidden lg:block absolute bottom-1 left-1/2 -translate-x-1/2 w-1.25 h-1.25 rounded-full bg-[#FF6A00]" aria-hidden="true" />
+                )}
               </a>
 
               {/* Nested Dropdown Links */}
               <ul
-                className={`dropdown-menu solutions-menu ${isDropdownOpen ? "show" : ""}`}
+                className={`list-none p-0 pl-3 m-0 lg:absolute lg:top-[calc(100%+10px)] lg:left-1/2 lg:-translate-x-1/2 lg:w-[230px] lg:bg-white lg:border lg:border-gray-200 lg:rounded-xl lg:p-1.5 lg:shadow-[0_10px_30px_-5px_rgba(0,0,0,0.08),0_4px_12px_-4px_rgba(0,0,0,0.04)] lg:z-50 ${
+                  isDropdownOpen ? "block lg:animate-menu-entry" : "hidden"
+                }`}
                 onMouseEnter={handleMenuMouseEnter}
                 onMouseLeave={handleMenuMouseLeave}
               >
                 <li>
                   <Link
-                    className={`dropdown-item ${pathname === "/home-tutoring" ? "active" : ""}`}
+                    className={getDropdownItemClass("/home-tutoring")}
                     href="/home-tutoring"
                     onClick={closeNavbar}
                   >
-                    <FaHouse /> Home Tutoring
+                    <FaHouse className="text-gray-400 text-base" /> Home Tutoring
                   </Link>
                 </li>
                 <li>
                   <Link
-                    className={`dropdown-item ${pathname === "/teacher-tutoring" ? "active" : ""}`}
+                    className={getDropdownItemClass("/teacher-tutoring")}
                     href="/teacher-tutoring"
                     onClick={closeNavbar}
                   >
-                    <FaChalkboard /> Teaching Tutoring
+                    <FaChalkboard className="text-gray-400 text-base" /> Teaching Tutoring
                   </Link>
                 </li>
                 <li>
                   <Link
-                    className={`dropdown-item ${pathname === "/coding-robotics-tutor" ? "active" : ""}`}
+                    className={getDropdownItemClass("/coding-robotics-tutor")}
                     href="/coding-robotics-tutor"
                     onClick={closeNavbar}
                   >
-                    <FaCode /> Coding &amp; Robotics
+                    <FaCode className="text-gray-400 text-base" /> Coding &amp; Robotics
                   </Link>
                 </li>
                 <li>
                   <Link
-                    className={`dropdown-item ${pathname === "/school-tutoring" ? "active" : ""}`}
+                    className={getDropdownItemClass("/school-tutoring")}
                     href="/school-tutoring"
                     onClick={closeNavbar}
                   >
-                    <FaSchool /> School Tutoring
+                    <FaSchool className="text-gray-400 text-base" /> School Tutoring
                   </Link>
                 </li>
-                <li className="menu-divider" />
+                <li className="h-[1px] bg-gray-100 my-2" />
                 <li>
                   <Link
-                    className={`dropdown-item highlights ${pathname === "/tutors-registration-form" ? "active" : ""}`}
+                    className={getDropdownItemClass("/tutors-registration-form")}
                     href="/tutors-registration-form"
                     onClick={closeNavbar}
                   >
-                    <FaUser /> Become a Tutor
+                    <FaUser className="text-gray-400 text-base" /> Become a Tutor
                   </Link>
                 </li>
               </ul>
             </li>
 
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${pathname === "/gallery" ? "active" : ""}`}
-                href="/gallery"
-                onClick={closeNavbar}
-              >
+            <li className="relative lg:block">
+              <Link className={getNavLinkClass("/gallery")} href="/gallery" onClick={closeNavbar}>
                 Gallery
-                {pathname === "/gallery" && <span className="active-dot" aria-hidden="true" />}
+                {pathname === "/gallery" && (
+                  <span className="hidden lg:block absolute bottom-1 left-1/2 -translate-x-1/2 w-1.25 h-1.25 rounded-full bg-[#FF6A00]" aria-hidden="true" />
+                )}
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${pathname === "/contact" ? "active" : ""}`}
-                href="/contact"
-                onClick={closeNavbar}
-              >
+            <li className="relative lg:block">
+              <Link className={getNavLinkClass("/contact")} href="/contact" onClick={closeNavbar}>
                 Contact Us
-                {pathname === "/contact" && <span className="active-dot" aria-hidden="true" />}
+                {pathname === "/contact" && (
+                  <span className="hidden lg:block absolute bottom-1 left-1/2 -translate-x-1/2 w-1.25 h-1.25 rounded-full bg-[#FF6A00]" aria-hidden="true" />
+                )}
               </Link>
             </li>
           </ul>
         </div>
       </div>
-
-      <style jsx>{`
-        /* --- Base Layout Reset & Variables --- */
-        .custom-navbar {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          background-color: #ffffff !important; /* Force solid white background */
-          border-bottom: 1px solid #f3f4f6;
-          box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
-          z-index: 1030;
-        }
-
-        .nav-container {
-          width: 100%;
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0.75rem 1.5rem;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          box-sizing: border-box;
-        }
-
-        .nav-brand {
-          display: flex;
-          align-items: center;
-          transition: transform 0.2s ease;
-        }
-        .nav-brand:hover {
-          transform: scale(1.03);
-        }
-
-        /* --- Toggle Mobile Button --- */
-        .nav-toggle-btn {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: #fffaf7; /* Soft light orange background */
-          border: 1px solid #ffebd9; /* Soft orange border */
-          color: #FF6A00; /* Brand orange icon */
-          font-size: 1.25rem;
-          padding: 0.6rem;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          z-index: 10001;
-        }
-        .nav-toggle-btn:hover {
-          background-color: #ffebd9; /* Deeper orange background on hover */
-          border-color: #ffd8be;
-          color: #e05e00; /* Darker orange icon on hover */
-        }
-
-        /* --- Navigation Items & Links --- */
-        .nav-list {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-
-        :global(.nav-link) {
-          position: relative;
-          display: flex;
-          align-items: center;
-          color: #111827 !important; /* Shade of black */
-          font-size: 0.85rem !important; /* Reduced font size */
-          font-weight: 500;
-          padding: 0.75rem 1rem;
-          text-decoration: none;
-          border-radius: 8px;
-          transition: all 0.2s ease;
-        }
-        :global(.nav-link:hover) {
-          color: #FF6A00 !important;
-          background-color: #fffaf7 !important;
-        }
-        :global(.nav-link.active) {
-          color: #FF6A00 !important;
-          font-weight: 600;
-          background-color: #fffaf7 !important;
-        }
-
-        /* Hidden on mobile to avoid breaking vertical link alignments */
-        .active-dot {
-          display: none; 
-        }
-
-        /* --- Mobile Menu Drawer --- */
-        .drawer-backdrop {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          background: rgba(17, 24, 39, 0.4);
-          backdrop-filter: blur(4px);
-          -webkit-backdrop-filter: blur(4px);
-          z-index: 999;
-        }
-
-        .nav-menu-wrapper {
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 280px;
-          height: 100vh;
-          background-color: #ffffff;
-          padding: 5.5rem 1.5rem 2rem 1.5rem;
-          box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
-          transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-          z-index: 1000;
-          overflow-y: auto;
-          box-sizing: border-box;
-        }
-        .nav-menu-wrapper.is-open {
-          right: 0;
-        }
-
-        /* --- Accordion Dropdown Mobile Navigation --- */
-        .solutions-toggle {
-          justify-content: space-between;
-          width: 100%;
-        }
-        .solutions-chevron {
-          font-size: 0.75rem;
-          transition: transform 0.25s ease;
-          opacity: 0.8;
-        }
-        .solutions-chevron.flipped {
-          transform: rotate(180deg);
-        }
-
-        .solutions-menu {
-          display: none;
-          list-style: none;
-          padding: 0.25rem 0 0 0.75rem;
-          margin: 0;
-        }
-        .solutions-menu.show {
-          display: block;
-        }
-
-        :global(.dropdown-item) {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          padding: 0.65rem 1rem;
-          color: #111827 !important; /* Shade of black */
-          font-size: 0.85rem !important; /* Match nav-link font size */
-          font-weight: 500;
-          text-decoration: none;
-          border-radius: 6px;
-          transition: all 0.2s ease;
-          margin-top: 2px;
-        }
-        :global(.dropdown-item svg) {
-          color: #9ca3af;
-          font-size: 1rem;
-        }
-        :global(.dropdown-item:hover), :global(.dropdown-item.active) {
-          color: #FF6A00 !important;
-          background-color: #fffaf7 !important;
-        }
-        :global(.dropdown-item:hover svg), :global(.dropdown-item.active svg) {
-          color: #FF6A00 !important;
-        }
-
-        .menu-divider {
-          height: 1px;
-          background-color: #f3f4f6;
-          margin: 0.5rem 0;
-        }
-
-        /* --- Desktop Specific Styles Breakpoint --- */
-        @media (min-width: 992px) {
-          .nav-toggle-btn, .drawer-backdrop {
-            display: none;
-          }
-
-          .nav-menu-wrapper {
-            position: static;
-            width: auto;
-            height: auto;
-            padding: 0;
-            box-shadow: none;
-            background: transparent;
-            overflow: visible;
-          }
-
-          .nav-list {
-            flex-direction: row;
-            align-items: center;
-            gap: 0.25rem;
-          }
-
-          :global(.nav-link) {
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-          }
-          :global(.nav-link:hover) {
-            background-color: #f9fafb !important;
-            color: #FF6A00 !important; /* Highlight color on hover */
-          }
-          :global(.nav-link.active) {
-            background-color: transparent !important;
-            color: #000000 !important; /* Active text color - solid black */
-            font-weight: 600 !important; /* Bolder text for active page */
-          }
-
-          /* Bottom Dot Indicator Setup (Fixed and stabilized layout dimensions) */
-          .active-dot {
-            display: block;
-            position: absolute;
-            bottom: 4px; /* Positioned directly under active nav text */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 5px;
-            height: 5px;
-            min-width: 5px;
-            min-height: 5px;
-            border-radius: 50%;
-            background-color: #FF6A00;
-          }
-
-          .solutions-toggle {
-            gap: 6px;
-          }
-
-          /* Desktop Floating Dropdown Overlay Menu */
-          .solutions-dropdown {
-            position: relative;
-          }
-          
-          /* Mouse Bridge */
-          .solutions-dropdown::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: -10px;
-            right: -10px;
-            height: 14px;
-            background: transparent;
-          }
-
-          .solutions-menu {
-            display: none;
-            position: absolute;
-            top: calc(100% + 10px);
-            left: 50%;
-            transform: translateX(-50%);
-            width: 230px;
-            background-color: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 6px;
-            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 12px -4px rgba(0, 0, 0, 0.04);
-          }
-
-          .solutions-menu.show {
-            display: block;
-            animation: menuEntryEffect 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-          }
-
-          :global(.dropdown-item) {
-            padding: 0.6rem 0.85rem;
-          }
-          :global(.dropdown-item:hover) {
-            background-color: #f9fafb !important;
-            color: #FF6A00 !important;
-          }
-          :global(.dropdown-item.active) {
-            background-color: rgba(255, 106, 0, 0.06) !important;
-            color: #c95200 !important;
-          }
-
-          @keyframes menuEntryEffect {
-            from {
-              opacity: 0;
-              transform: translateX(-50%) translateY(-8px) scale(0.96);
-            }
-            to {
-              opacity: 1;
-              transform: translateX(-50%) translateY(0) scale(1);
-            }
-          }
-        }
-      `}</style>
     </nav>
   );
 }

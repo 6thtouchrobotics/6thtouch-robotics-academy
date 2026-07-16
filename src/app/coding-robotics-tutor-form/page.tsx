@@ -1,214 +1,140 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { useLocationData } from "@/hooks/useLocationData";
+import FormInput from "@/components/FormInput";
+import FormSelect from "@/components/FormSelect";
 
 export default function CodingRoboticsTutorForm() {
-  const [countriesData, setCountriesData] = useState([]);
-  const [cities, setCities] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchLocation = async () => {
-      const url = "https://countriesnow.space/api/v0.1/countries";
-      try {
-        const response = await fetch(url);
-        const result = await response.json();
-        let { data } = result;
-
-        data = data.sort((a, b) => {
-          const nameA = a.country.toUpperCase();
-          const nameB = b.country.toUpperCase();
-          if (nameA < nameB) return -1;
-          if (nameA > nameB) return 1;
-          return 0;
-        });
-
-        setCountriesData(data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching locations:", error);
-        setLoading(false);
-      }
-    };
-    fetchLocation();
-  }, []);
-
-  const handleCountryChange = (e) => {
-    const countryName = e.target.value;
-    setSelectedCountry(countryName);
-    if (countryName) {
-      const matched = countriesData.find((c) => c.country === countryName);
-      if (matched && matched.cities) {
-        setCities(matched.cities.sort());
-      } else {
-        setCities([]);
-      }
-    } else {
-      setCities([]);
-    }
-  };
+  const {
+    countriesData,
+    cities,
+    selectedCountry,
+    loading,
+    handleCountryChange,
+  } = useLocationData();
 
   return (
-    <section className="container-fluid py-5 mt-5 mb-5">
-      <div className="container py-4">
-        <h1 className="h2 fw-bold mb-2" style={{ color: "#FF6A00" }}>
+    <section className="w-full py-16 mt-20 mb-12 font-sans text-left">
+      <div className="max-w-[800px] mx-auto px-6">
+        <h1 className="text-3xl font-bold mb-2 text-[#FF6A00] leading-tight">
           Application for <br />
           Coding &amp; Robotics in Schools
         </h1>
-        <p className="lead">Please complete this form to request a tutor.</p>
+        <p className="text-base text-gray-500">Please complete this form to request a tutor.</p>
+        
         <form
-          className="row mt-4"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
           action="https://formspree.io/f/mrewdoyp"
           method="post"
         >
-          <div className="col-md-6 mt-3">
-            <div className="form-floating">
-              <input
-                type="text"
-                className="form-control form-control-lg"
-                placeholder="First name *"
-                name="First name"
-                required
-              />
-              <label>
-                First name <span className="text-danger">*</span>
-              </label>
-            </div>
-          </div>
-          <div className="col-md-6 mt-3">
-            <div className="form-floating">
-              <input
-                type="text"
-                className="form-control form-control-lg"
-                placeholder="Last name *"
-                name="Last name"
-                required
-              />
-              <label>
-                Last name <span className="text-danger">*</span>
-              </label>
-            </div>
-          </div>
-          <div className="col-md-6 mt-3">
-            <div className="form-floating">
-              <input
-                type="email"
-                className="form-control form-control-lg"
-                placeholder="Email *"
-                name="Email"
-                required
-              />
-              <label>
-                Email <span className="text-danger">*</span>
-              </label>
-            </div>
-          </div>
-          <div className="col-md-6 mt-3">
-            <div className="form-floating">
-              <input
-                type="tel"
-                className="form-control form-control-lg"
-                placeholder="Phone Number *"
-                name="Phone Number"
-                required
-              />
-              <label>
-                Phone Number (Whatsapp) <span className="text-danger">*</span>
-              </label>
-            </div>
-          </div>
+          <FormInput
+            label="First name"
+            name="First name"
+            placeholder="First name"
+            required
+          />
+          
+          <FormInput
+            label="Last name"
+            name="Last name"
+            placeholder="Last name"
+            required
+          />
+          
+          <FormInput
+            label="Email"
+            name="Email"
+            type="email"
+            placeholder="Email"
+            required
+          />
+          
+          <FormInput
+            label="Phone Number (Whatsapp)"
+            name="Phone Number"
+            type="tel"
+            placeholder="Phone Number"
+            required
+          />
 
-          <div className="col-md-6 mt-3">
-            <select
-              className="form-select form-select-lg h-100"
-              name="Country"
-              value={selectedCountry}
-              onChange={handleCountryChange}
-              disabled={loading}
-              required
-            >
-              <option value="">Country *</option>
-              {countriesData.map((c, idx) => (
-                <option key={idx} value={c.country}>
-                  {c.country}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="col-md-6 mt-3">
-            <select
-              className="form-select form-select-lg h-100"
-              name="City"
-              disabled={loading || !selectedCountry}
-              required
-            >
-              <option value="">City *</option>
-              {cities.map((city, idx) => (
-                <option key={idx} value={city}>
-                  {city}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="col-md-6 mt-3">
-            <select
-              name="Population of students"
-              className="form-select form-select-lg"
-              required
-            >
-              <option value="">Population of students *</option>
-              <option value="0-100">0-100</option>
-              <option value="100-200">100-200</option>
-              <option value="200-300">200-300</option>
-              <option value="300-400">300-400</option>
-              <option value="500 above">500 above</option>
-            </select>
-          </div>
-          <div className="col-md-6 mt-3">
-            <select
-              className="form-select form-select-lg h-100"
-              name="Type of service"
-              required
-            >
-              <option value="">
-                What type of tutoring service are you in need of? *
+          <FormSelect
+            label="Country"
+            name="Country"
+            value={selectedCountry}
+            onChange={handleCountryChange}
+            disabled={loading}
+            required
+          >
+            <option value="">Country</option>
+            {countriesData.map((c, idx) => (
+              <option key={idx} value={c.country}>
+                {c.country}
               </option>
-              <option value="Coding only">Coding only</option>
-              <option value="Coding & Robotics">Coding &amp; Robotics</option>
-            </select>
-          </div>
-          <div className="col-md-12 mt-3">
-            <div className="form-floating">
-              <input
-                type="text"
-                className="form-control form-control-lg"
-                placeholder="Address *"
-                name="Address"
-                required
-              />
-              <label>Address</label>
-            </div>
-          </div>
-          <div className="col-md-12 mt-3">
-            <div className="form-floating">
-              <textarea
-                className="form-control form-control-lg"
-                placeholder="Do you have any important information you want to share? *"
-                name="Important information"
-                required
-                style={{ height: "120px" }}
-              ></textarea>
-              <label>Important information</label>
-            </div>
-          </div>
+            ))}
+          </FormSelect>
 
-          <div className="col-md-12 mt-3">
-            <button className="btn btn-primary btn-lg w-100 d-flex align-items-center justify-content-center gap-2" type="submit">
+          <FormSelect
+            label="City"
+            name="City"
+            disabled={loading || !selectedCountry}
+            required
+          >
+            <option value="">City</option>
+            {cities.map((city, idx) => (
+              <option key={idx} value={city}>
+                {city}
+              </option>
+            ))}
+          </FormSelect>
+
+          <FormSelect
+            label="Population of students"
+            name="Population of students"
+            required
+          >
+            <option value="">Population of students</option>
+            <option value="0-100">0-100</option>
+            <option value="100-200">100-200</option>
+            <option value="200-300">200-300</option>
+            <option value="300-400">300-400</option>
+            <option value="500 above">500 above</option>
+          </FormSelect>
+
+          <FormSelect
+            label="Type of service"
+            name="Type of service"
+            required
+          >
+            <option value="">Select type of tutoring service</option>
+            <option value="Coding only">Coding only</option>
+            <option value="Coding & Robotics">Coding &amp; Robotics</option>
+          </FormSelect>
+
+          <FormInput
+            label="Address"
+            name="Address"
+            placeholder="Address"
+            className="md:col-span-2"
+            required
+          />
+
+          <FormInput
+            label="Important information"
+            name="Important information"
+            placeholder="Important information"
+            isTextArea={true}
+            className="md:col-span-2"
+            required
+          />
+
+          <div className="md:col-span-2 mt-2">
+            <button
+              className="w-full bg-[#1E3A8A] text-white py-3 px-6 rounded-xl hover:bg-[#152d6b] flex items-center justify-center gap-2 font-semibold text-sm transition-all duration-200 cursor-pointer"
+              type="submit"
+            >
               Submit request
-              <FaArrowUpRightFromSquare />
+              <FaArrowUpRightFromSquare className="text-xs" />
             </button>
           </div>
         </form>

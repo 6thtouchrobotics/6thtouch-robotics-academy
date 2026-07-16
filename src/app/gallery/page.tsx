@@ -65,22 +65,22 @@ export default function Gallery() {
 
   return (
     <>
-      <section className="container-fluid py-5 mt-5">
-        <div className="container">
-          <div className="text-start mb-4">
-            <h1 className="h2 fw-bold mb-2" style={{ color: "#FF6A00" }}>Browse Gallery</h1>
-            <p className="text-sm text-muted mb-0">
+      <section className="w-full py-16 mt-20 mb-12 font-sans text-left">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="text-left mb-6">
+            <h1 className="text-3xl font-bold mb-2 text-[#FF6A00]">Browse Gallery</h1>
+            <p className="text-sm text-gray-500 mb-0">
               Explore highlights from our robotics, STEM, and learning experiences.
             </p>
           </div>
 
           {/* Grid */}
-          <div className="row mt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
             {pageImages.map((imgSrc, idx) => {
               return (
-                <div className="col-12 col-sm-6 col-lg-3 mt-3" key={startIdx + idx}>
+                <div key={startIdx + idx} className="col-span-1">
                   <div
-                    className="rounded-3 overflow-hidden gallery-card"
+                    className="rounded-2xl overflow-hidden gallery-card bg-white"
                     onClick={() => openModal(imgSrc)}
                     style={{
                       cursor: "pointer",
@@ -90,8 +90,7 @@ export default function Gallery() {
                     <img
                       src={imgSrc}
                       alt={`Gallery item ${startIdx + idx + 1}`}
-                      className="gallery-image img-fluid w-100"
-                      style={{ height: "260px", objectFit: "cover" }}
+                      className="gallery-image w-full h-[260px] object-cover transition-transform duration-300 hover:scale-105"
                     />
                   </div>
                 </div>
@@ -100,119 +99,99 @@ export default function Gallery() {
           </div>
 
           {/* Result count */}
-          <p className="text-muted small mt-4 mb-0">
+          <p className="text-gray-500 text-xs mt-6 mb-0">
             Showing {startIdx + 1}–{Math.min(startIdx + ITEMS_PER_PAGE, allImages.length)} of{" "}
             {allImages.length} photos
           </p>
-        </div>
 
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="container mt-4">
-            <nav aria-label="Gallery pagination" className="d-flex justify-content-center">
-              <div className="d-flex align-items-center gap-2">
-                {/* Prev */}
-                <button
-                  className="gallery-page-btn"
-                  onClick={() => goToPage(currentPage - 1)}
-                  disabled={currentPage === 1}
-                  aria-label="Previous page"
-                  style={{
-                    backgroundColor: currentPage === 1 ? "#f3f4f6" : "#1E3A8A",
-                    color: currentPage === 1 ? "#9ca3af" : "#ffffff",
-                  }}
-                >
-                  <FaChevronLeft size={12} />
-                </button>
-
-                {/* Page numbers */}
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="mt-10 flex justify-center">
+              <nav aria-label="Gallery pagination" className="flex justify-center">
+                <div className="flex items-center gap-2">
+                  {/* Prev */}
                   <button
-                    key={page}
-                    className="gallery-page-btn"
-                    onClick={() => goToPage(page)}
-                    aria-label={`Page ${page}`}
-                    aria-current={currentPage === page ? "page" : undefined}
+                    className="inline-flex items-center justify-center min-w-[38px] h-[38px] px-2.5 border-none rounded-lg text-sm transition-all duration-150 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 enabled:hover:-translate-y-0.5 enabled:hover:brightness-95"
+                    onClick={() => goToPage(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    aria-label="Previous page"
                     style={{
-                      backgroundColor: currentPage === page ? "#FFCA00" : "#f3f4f6",
-                      color: currentPage === page ? "#111827" : "#374151",
-                      fontWeight: currentPage === page ? 700 : 500,
-                      boxShadow:
-                        currentPage === page
-                          ? "0 2px 8px rgba(255,202,0,0.40)"
-                          : "none",
+                      backgroundColor: currentPage === 1 ? "#f3f4f6" : "#1E3A8A",
+                      color: currentPage === 1 ? "#9ca3af" : "#ffffff",
                     }}
                   >
-                    {page}
+                    <FaChevronLeft size={12} />
                   </button>
-                ))}
 
-                {/* Next */}
-                <button
-                  className="gallery-page-btn"
-                  onClick={() => goToPage(currentPage + 1)}
-                  disabled={currentPage === totalPages}
-                  aria-label="Next page"
-                  style={{
-                    backgroundColor: currentPage === totalPages ? "#f3f4f6" : "#1E3A8A",
-                    color: currentPage === totalPages ? "#9ca3af" : "#ffffff",
-                  }}
-                >
-                  <FaChevronRight size={12} />
-                </button>
-              </div>
-            </nav>
-          </div>
-        )}
+                  {/* Page numbers */}
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                    <button
+                      key={page}
+                      className="inline-flex items-center justify-center min-w-[38px] h-[38px] px-2.5 border-none rounded-lg text-sm transition-all duration-150 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 enabled:hover:-translate-y-0.5 enabled:hover:brightness-95"
+                      onClick={() => goToPage(page)}
+                      aria-label={`Page ${page}`}
+                      aria-current={currentPage === page ? "page" : undefined}
+                      style={{
+                        backgroundColor: currentPage === page ? "#FFCA00" : "#f3f4f6",
+                        color: currentPage === page ? "#111827" : "#374151",
+                        fontWeight: currentPage === page ? 700 : 500,
+                        boxShadow:
+                          currentPage === page
+                            ? "0 2px 8px rgba(255,202,0,0.40)"
+                            : "none",
+                      }}
+                    >
+                      {page}
+                    </button>
+                  ))}
+
+                  {/* Next */}
+                  <button
+                    className="inline-flex items-center justify-center min-w-[38px] h-[38px] px-2.5 border-none rounded-lg text-sm transition-all duration-150 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 enabled:hover:-translate-y-0.5 enabled:hover:brightness-95"
+                    onClick={() => goToPage(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    aria-label="Next page"
+                    style={{
+                      backgroundColor: currentPage === totalPages ? "#f3f4f6" : "#1E3A8A",
+                      color: currentPage === totalPages ? "#9ca3af" : "#ffffff",
+                    }}
+                  >
+                    <FaChevronRight size={12} />
+                  </button>
+                </div>
+              </nav>
+            </div>
+          )}
+        </div>
       </section>
 
       {/* Modal */}
       {modalImage && (
         <section
-          className="container-fluid gallery-modal active"
+          className="fixed inset-0 w-full h-full bg-black/80 z-[9999] flex flex-col items-center justify-center"
           onClick={closeModal}
         >
-          <div className="close">
-            <button className="close-btn" onClick={closeModal} aria-label="Close modal">
+          <div className="absolute top-6 right-6 z-[10000]">
+            <button
+              className="bg-transparent border-none text-white text-3xl cursor-pointer hover:scale-110 transition-transform duration-150"
+              onClick={closeModal}
+              aria-label="Close modal"
+            >
               <FaXmark />
             </button>
           </div>
-          <div onClick={(e) => e.stopPropagation()}>
-            <img src={modalImage} alt="Gallery preview" className="img-fluid modal-image" />
+          <div
+            className="max-w-[90%] max-h-[85%] flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={modalImage}
+              alt="Gallery preview"
+              className="max-w-full max-h-full rounded-2xl object-contain shadow-2xl"
+            />
           </div>
         </section>
       )}
-
-      <style>{`
-        .gallery-card {
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .gallery-card:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
-        }
-        .gallery-page-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          min-width: 38px;
-          height: 38px;
-          padding: 0 10px;
-          border: none;
-          border-radius: 8px;
-          font-size: 0.875rem;
-          cursor: pointer;
-          transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.15s ease;
-        }
-        .gallery-page-btn:disabled {
-          cursor: not-allowed;
-          opacity: 0.6;
-        }
-        .gallery-page-btn:not(:disabled):hover {
-          transform: translateY(-1px);
-          filter: brightness(0.93);
-        }
-      `}</style>
     </>
   );
 }
