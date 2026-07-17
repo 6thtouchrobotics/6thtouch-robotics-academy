@@ -101,6 +101,11 @@ export default function Footer() {
                   Gallery
                 </Link>
               </li>
+              <li className="mb-2.5">
+                <Link href="/events" className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm">
+                  Events
+                </Link>
+              </li>
             </ul>
           </div>
 

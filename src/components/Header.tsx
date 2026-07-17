@@ -281,6 +281,14 @@ export default function Header() {
               </Link>
             </li>
             <li className="relative lg:block">
+              <Link className={getNavLinkClass("/events")} href="/events" onClick={closeNavbar}>
+                Events
+                {pathname === "/events" && (
+                  <span className="hidden lg:block absolute bottom-1 left-1/2 -translate-x-1/2 w-1.25 h-1.25 rounded-full bg-[#FF6A00]" aria-hidden="true" />
+                )}
+              </Link>
+            </li>
+            <li className="relative lg:block">
               <Link className={getNavLinkClass("/contact")} href="/contact" onClick={closeNavbar}>
                 Contact Us
                 {pathname === "/contact" && (

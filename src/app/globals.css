@@ -146,4 +146,19 @@ body {
 .animate-menu-entry {
   animation: menuEntryEffect 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Modal Entry Animation */
+@keyframes modalEntryEffect {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.animate-modal-entry {
+  animation: modalEntryEffect 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 

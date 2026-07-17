@@ -1,0 +1,21 @@
+[
+  {
+    "id": "intensive-training-2026",
+    "title": "6thTouch Robotics Intensive Training Program",
+    "description": "Future-proof your skills in 2 weeks! Master software development, AI, and hands-on robotics including Arduino and LEGO.",
+    "longDescription": "Future-proof your skills in 2 weeks with our intensive hands-on bootcamp. You will master both coding (software development with AI integration) and robotics (microcontrollers, sensors, actuators, and smart automation). This program focuses on building real physical prototypes, working in collaborative teams, and gaining practical engineering experience. Highly recommended for students and tech enthusiasts looking to build a strong foundation in modern technology.",
+    "category": "Bootcamps",
+    "role": "Anchored",
+    "date": "Aug 1, 2026 | 2 Weeks",
+    "location": "Girls School, Ojo Barracks, Ojo",
+    "image": "/assets/images/gallery_image_1.jpg",
+    "achievements": ["Intensive STEM Certification", "Real Prototype Build"],
+    "highlights": [
+      "Coding: Software Development — Build real apps with AI baked in.",
+      "Robotics (Arduino + LEGO) — Sensors, actuators, microcontrollers & smart automation — bring circuits to life, hands-on.",
+      "Build real prototypes, not just theory.",
+      "Learn alongside a team, not alone.",
+      "Get hands-on experience and professional mentor feedback."
+    ]
+  }
+]
