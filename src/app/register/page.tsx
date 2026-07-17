@@ -46,7 +46,7 @@ export default function RegisterPage() {
 <p className="text-sm mb-4 leading-relaxed flex flex-wrap items-center gap-x-2 gap-y-1 text-gray-800">
   <FaCalendarDays className="inline align-middle" /> <strong>Aug 1, 2026 (2 Weeks)</strong>
   <span></span>
-  <FaLocationDot className="inline align-middle" /> <strong>Girls School, Ojo Barracks, Ojo</strong>
+  <FaLocationDot className="inline align-middle" /> <strong>Ojo Barracks, Ojo, Lagos, Nigeria</strong>
 </p>
 
 <div className="mb-4 text-sm text-gray-800">
