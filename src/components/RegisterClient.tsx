@@ -39,6 +39,9 @@ export default function RegisterClient() {
               <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-[#FF6A00] leading-tight">
                 FUTURE-PROOF YOUR SKILLS IN 2 WEEKS
               </h1>
+              <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-800 leading-tight">
+                ₦10,000 ONLY
+              </h1>
               <p className="text-sm mb-4 leading-relaxed">
                 At <span className="font-bold">6thtouch Robotics Academy</span>, we are launching our <strong>Intensive Training Program</strong> to help you future-proof your skills in just 2 weeks. 
               </p>
