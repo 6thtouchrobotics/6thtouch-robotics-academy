@@ -11,7 +11,7 @@ export default function CEOSection() {
           <div className="md:col-span-4">
             <img
               src="/assets/images/andrew.jpeg"
-              alt="Aisagbonhi Andrew"
+              alt="Aisagbonhi .C. Andrew 6thtouch Robotics CEO"
               className="w-full rounded-2xl shadow-md object-cover max-h-[360px]"
             />
           </div>
@@ -21,12 +21,12 @@ export default function CEOSection() {
             <p className="text-xs uppercase text-gray-500 font-semibold tracking-wider mb-2">
               Leadership
             </p>
-            <h2 className="text-3xl font-bold mb-3 text-[#FF6A00]">
-              Meet our CEO
-            </h2>
-            <h3 className="text-xl font-bold mb-3 text-[#1E3A8A]">
+            <h2 className="text-3xl font-bold mb-1 text-[#FF6A00]">
               Aisagbonhi .C. Andrew
-            </h3>
+            </h2>
+            <p className="text-sm font-semibold text-[#1E3A8A] mb-4">
+              CEO & Founder, 6thtouch Robotics Academy
+            </p>
             <p className="text-sm text-gray-600 mb-6 leading-relaxed">
               Andrew is a certified teacher and a professional STEM and robotics educator and coach. He has trained over 1,500 teachers in STEM and robotics and has earned certifications from global and local partners including Edupoint Robocode, World Robotic Olympiad, Archlight Foundation, First Lego League, and the Lagos State Ministry of Education.
             </p>

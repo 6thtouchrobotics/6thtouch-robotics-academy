@@ -2,12 +2,38 @@ import CEOSection from "@/components/CEOSection";
 import TutorsSection from "@/components/TutorsSection";
 
 export const metadata = {
-  title: "About | 6thtouch Robotics Academy",
+  title: "About Us | 6thtouch Robotics Academy",
+  description: "Discover the mission, vision, and core team behind 6thtouch Robotics Academy. Meet our CEO Aisagbonhi .C. Andrew and our technology and design leaders.",
+  keywords: "6thtouch team, Aisagbonhi Andrew, robotics educators, STEM training Nigeria, about 6thtouch",
 };
 
 export default function About() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Aisagbonhi .C. Andrew",
+    "jobTitle": "CEO & Founder",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "6thtouch Robotics Academy",
+      "url": "https://6thtouchrobotics.com"
+    },
+    "image": "https://6thtouchrobotics.com/assets/images/andrew.jpeg",
+    "url": "https://6thtouchrobotics.com/about",
+    "sameAs": [
+      "https://www.linkedin.com/in/andrew-aisagbonhi-687521145/",
+      "https://www.instagram.com/6thtouch__photgraphy/",
+      "https://www.facebook.com/share/194omEZeiT/"
+    ],
+    "description": "Andrew is a certified teacher and a professional STEM and robotics educator and coach. He has trained over 1,500 teachers in STEM and robotics and has earned certifications from global and local partners including World Robotic Olympiad, First Lego League, and the Lagos State Ministry of Education."
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Intro Section */}
       <div className="w-full mt-20 py-12 font-sans">
         <div className="max-w-[1200px] mx-auto px-6">

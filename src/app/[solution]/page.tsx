@@ -23,6 +23,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
   return {
     title: `${pageData.title} | 6thtouch Robotics Academy`,
+    description: pageData.description,
+    keywords: `${pageData.title}, 6thtouch solutions, robotics tutoring, STEM ${solution}, robotics training Nigeria`,
   };
 }
 
