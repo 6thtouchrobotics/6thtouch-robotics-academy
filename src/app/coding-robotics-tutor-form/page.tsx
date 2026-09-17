@@ -25,7 +25,7 @@ export default function CodingRoboticsTutorForm() {
         
         <form
           className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
-          action="https://formspree.io/f/mrewdoyp"
+          action="https://formspree.io/f/xbjnwzdl"
           method="post"
         >
           <FormInput
