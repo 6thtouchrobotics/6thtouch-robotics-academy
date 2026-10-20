@@ -24,7 +24,7 @@ export default function SchoolTutoringForm() {
         
         <form
           className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
-          action="https://formspree.io/f/mdarjpwl"
+          action="https://formspree.io/f/xblryyrq"
           method="post"
         >
           <FormInput
