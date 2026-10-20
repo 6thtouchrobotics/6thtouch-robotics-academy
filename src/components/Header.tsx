@@ -184,6 +184,14 @@ export default function Header() {
                 )}
               </Link>
             </li>
+            <li className="relative lg:block">
+              <Link className={getNavLinkClass("/careers")} href="/careers" onClick={closeNavbar}>
+                Careers
+                {pathname === "/careers" && (
+                  <span className="hidden lg:block absolute bottom-1 left-1/2 -translate-x-1/2 w-1.25 h-1.25 rounded-full bg-[#FF6A00]" aria-hidden="true" />
+                )}
+              </Link>
+            </li>
 
             {/* Dropdown Navigation Item */}
             <li

@@ -97,6 +97,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li className="mb-2.5">
+                <Link href="/careers" className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm">
+                  Careers
+                </Link>
+              </li>
+              <li className="mb-2.5">
                 <Link href="/gallery" className="text-gray-600 hover:text-[#FF6A00] transition-colors duration-150 no-underline text-sm">
                   Gallery
                 </Link>
