@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FaArrowLeft } from "react-icons/fa6";
 import { careerRoles, getCareerRole } from "@/data/careerRoles";
+import CareerApplicationForm from "@/components/CareerApplicationForm";
 
 type CareerDetailPageProps = {
   params: Promise<{ role: string }>;
@@ -42,8 +43,6 @@ export default async function CareerDetailPage({ params }: CareerDetailPageProps
 
   if (!role) notFound();
 
-  const applicationLink = `mailto:6thtouchrobotics@gmail.com?subject=${encodeURIComponent(`Application: ${role.title}`)}`;
-
   return (
     <div className="min-h-screen bg-[#f4f1eb] px-6 pb-20 pt-[110px] text-[#1c2435]">
       <div className="mx-auto max-w-[1120px]">
@@ -70,7 +69,7 @@ export default async function CareerDetailPage({ params }: CareerDetailPageProps
 
         <div className="mt-9 flex justify-center">
           <a
-            href={applicationLink}
+            href="#application-form"
             className="rounded-[12px] bg-[#1c3a6d] px-7 py-3 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(28,58,109,0.18)] transition-colors hover:bg-[#132b52]"
           >
             Apply for this Role
@@ -90,9 +89,13 @@ export default async function CareerDetailPage({ params }: CareerDetailPageProps
           <RoleList title="Nice to Haves" items={role.niceToHave} />
           <RoleList title="What We Offer" items={role.whatWeOffer} />
 
-          <div className="mt-12 flex justify-center">
+          <div className="mt-12">
+            <CareerApplicationForm roleTitle={role.title} />
+          </div>
+
+          <div className="mt-8 flex justify-center">
             <a
-              href={applicationLink}
+              href="#application-form"
               className="rounded-[12px] bg-[#1c3a6d] px-7 py-3 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(28,58,109,0.18)] transition-colors hover:bg-[#132b52]"
             >
               Apply for this Role

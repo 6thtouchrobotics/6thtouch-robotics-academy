@@ -16,7 +16,7 @@ export default function CareersPage() {
             Join the 6thTouch Team
           </h1>
           <p className="mx-auto mt-4 max-w-[760px] text-[15px] leading-7 text-[#4d5d74]">
-            We are building a world-class STEM education ecosystem. Explore our open positions across instruction, curriculum development, and technical mentorship.
+            Help us make hands-on STEM education accessible to more learners. Explore opportunities to teach robotics or build the digital products that support their learning.
           </p>
         </header>
 
