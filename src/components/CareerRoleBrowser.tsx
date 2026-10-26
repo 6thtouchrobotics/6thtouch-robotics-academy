@@ -50,8 +50,7 @@ export default function CareerRoleBrowser() {
           onChange={(event) => setLocation(event.target.value)}
         >
           <option value="">Select Location</option>
-          <option value="Lagos, Nigeria">Lagos, Nigeria</option>
-          <option value="Remote, Nigeria">Remote, Nigeria</option>
+          <option value="Ojo, Lagos, Nigeria">Ojo, Lagos, Nigeria</option>
         </select>
         <button
           className="rounded-[12px] bg-[#1c3a6d] px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(28,58,109,0.18)] transition-colors hover:bg-[#132b52] md:min-w-[120px]"
