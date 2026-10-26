@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FaArrowLeft } from "react-icons/fa6";
 import { careerRoles, getCareerRole } from "@/data/careerRoles";
-import CareerApplicationForm from "@/components/CareerApplicationForm";
 
 type CareerDetailPageProps = {
   params: Promise<{ role: string }>;
@@ -24,7 +23,7 @@ export async function generateMetadata({ params }: CareerDetailPageProps) {
 function RoleList({ title, items }: { title: string; items: string[] }) {
   return (
     <section className="mb-10">
-      <h2 className="mb-4 text-[1.1rem] font-bold text-[#1f3258]">{title}</h2>
+      <h2 className="mb-4 text-[1.1rem] font-bold text-[#F36300]">{title}</h2>
       <ul className="space-y-3 text-[15px] leading-7 text-[#4c5867]">
         {items.map((item) => (
           <li key={item} className="flex gap-3">
@@ -68,17 +67,17 @@ export default async function CareerDetailPage({ params }: CareerDetailPageProps
         </header>
 
         <div className="mt-9 flex justify-center">
-          <a
-            href="#application-form"
+          <Link
+            href={`/careers/apply?role=${role.id}`}
             className="rounded-[12px] bg-[#1c3a6d] px-7 py-3 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(28,58,109,0.18)] transition-colors hover:bg-[#132b52]"
           >
             Apply for this Role
-          </a>
+          </Link>
         </div>
 
         <div className="mx-auto mt-14 max-w-[760px] text-[#1e2d40]">
           <section className="mb-10">
-            <h2 className="mb-4 text-[1.1rem] font-bold text-[#1f3258]">About the Role</h2>
+            <h2 className="mb-4 text-[1.1rem] font-bold text-[#F36300]">About the Role</h2>
             <div className="space-y-4 text-[15px] leading-7 text-[#4c5867]">
               {role.about.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </div>
@@ -89,17 +88,13 @@ export default async function CareerDetailPage({ params }: CareerDetailPageProps
           <RoleList title="Nice to Haves" items={role.niceToHave} />
           <RoleList title="What We Offer" items={role.whatWeOffer} />
 
-          <div className="mt-12">
-            <CareerApplicationForm roleTitle={role.title} />
-          </div>
-
           <div className="mt-8 flex justify-center">
-            <a
-              href="#application-form"
+            <Link
+              href={`/careers/apply?role=${role.id}`}
               className="rounded-[12px] bg-[#1c3a6d] px-7 py-3 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(28,58,109,0.18)] transition-colors hover:bg-[#132b52]"
             >
               Apply for this Role
-            </a>
+            </Link>
           </div>
         </div>
       </div>
