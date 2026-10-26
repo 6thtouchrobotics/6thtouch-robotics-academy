@@ -53,7 +53,7 @@ export default async function CareerDetailPage({ params }: CareerDetailPageProps
           Back to Careers
         </Link>
 
-        <header className="text-center">
+        <header className="mt-9 text-center">
           <h1 className="text-[clamp(2.2rem,4vw,3.4rem)] font-extrabold leading-none tracking-[-0.05em] text-[#1f3258]">
             {role.title}
           </h1>

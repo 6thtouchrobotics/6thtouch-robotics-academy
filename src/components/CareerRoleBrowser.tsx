@@ -41,7 +41,6 @@ export default function CareerRoleBrowser() {
           onChange={(event) => setDepartment(event.target.value)}
         >
           <option value="">Select Department</option>
-          <option value="Engineering">Engineering</option>
           <option value="Education">Education</option>
         </select>
         <select

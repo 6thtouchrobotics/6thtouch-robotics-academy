@@ -15,7 +15,7 @@ export const careerRoles: CareerRole[] = [
   {
     id: "software-developer-full-stack",
     title: "Software Developer (Full Stack)",
-    department: "Engineering",
+    department: "Education",
     location: "Remote, Nigeria",
     employmentType: "Part-Time / Contract",
     about: [
@@ -88,6 +88,41 @@ export const careerRoles: CareerRole[] = [
       "Access to educational robotics resources and opportunities to grow as an instructor.",
       "Support from a team committed to creative, hands-on learning.",
       "Flexible part-time or contract engagement.",
+    ],
+  },
+  {
+    id: "ui-ux-designer",
+    title: "UI/UX Designer",
+    department: "Education",
+    location: "Remote, Nigeria",
+    employmentType: "Part-Time / Contract",
+    about: [
+      "6thTouch is creating clear, engaging digital experiences for students, tutors, schools, and partners. We are looking for a UI/UX Designer to turn education and technology needs into thoughtful, accessible interfaces.",
+      "In this role, you will translate ideas and user feedback into wireframes, prototypes, and polished interface designs. You will work closely with educators and developers to make every learning journey easy to understand and enjoyable to use.",
+    ],
+    responsibilities: [
+      "Research user needs and map simple, effective journeys across websites and digital learning products.",
+      "Create wireframes, user flows, prototypes, and responsive high-fidelity designs.",
+      "Build consistent interface components and help maintain a practical visual design system.",
+      "Collaborate with developers to ensure designs are implemented accurately and remain accessible.",
+      "Test concepts with users, review feedback, and iterate designs based on evidence.",
+    ],
+    requirements: [
+      "Experience designing digital interfaces, with a portfolio showing your process and final work.",
+      "Working knowledge of Figma or similar interface and prototyping tools.",
+      "Understanding of responsive layout, accessibility, visual hierarchy, and usability principles.",
+      "Ability to communicate design decisions clearly and collaborate with technical and non-technical teammates.",
+    ],
+    niceToHave: [
+      "Experience designing education, learning, or youth-focused products.",
+      "Basic understanding of frontend implementation and design handoff.",
+      "Motion design, illustration, or brand identity experience.",
+    ],
+    whatWeOffer: [
+      "A role with meaningful impact on education-focused digital products.",
+      "Close collaboration with educators, developers, and program teams.",
+      "Flexible part-time or contract engagement.",
+      "Space to contribute ideas and grow a user-centered design practice.",
     ],
   },
 ];
